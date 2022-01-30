@@ -24,7 +24,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'username' => Hash::make($request->name),
-            'image' => url('uploads/user/' . $image),
+            'image' => $image,
             'major' => $request->major,
             'interests' => $request->interests,
             'dob' => $request->dob,

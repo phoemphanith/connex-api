@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $appends = ['image_url'];
     protected $fillable = [
         'name',
         'email',
@@ -47,4 +48,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->image) return url('uploads/user/' . $this->image);
+        return null;
+    }
 }
